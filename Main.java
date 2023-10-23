@@ -5,7 +5,7 @@ public class Main {
         try (Scanner scanner = new Scanner(System.in)) {
             CircularCola cola = new CircularCola(10);
 
-            buclePrincipal: // Etiqueta para el bucle
+            buclePrincipal: 
             while (true) {
                 System.out.println("Menú:");
                 System.out.println("1. Inicializar / Borrar Cola");

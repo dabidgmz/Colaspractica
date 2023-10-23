@@ -38,23 +38,25 @@ class CircularCola {
         return inicio == -1;
     }
 
-    public void insertarElemento(int elemento, boolean insertarAlinicio) {
-        if (estáLlena()) {
-            System.out.println("La cola está llena");
-            return;
-        }
-
-        if (estáVacia()) {
-            inicio = 0;
-            Finaal = 0;
-        } else if (insertarAlinicio) {
-            inicio = (inicio - 1 + tamañoMáximo) % tamañoMáximo;
-        } else {
-            Finaal = (Finaal + 1) % tamañoMáximo;
-        }
-
-        cola[insertarAlinicio ? inicio : Finaal] = elemento;
+    
+public void insertarElemento(int elemento, boolean insertarAlinicio) {
+    if (estáLlena()) {
+        System.out.println("La cola está llena, no se puede insertar.");
+        return;
     }
+
+    if (estáVacia()) {
+        inicio = 0;
+        Finaal = 0;
+    } else if (insertarAlinicio) {
+        inicio = (inicio - 1 + tamañoMáximo) % tamañoMáximo;
+    } else {
+        Finaal = (Finaal + 1) % tamañoMáximo;
+    }
+
+    cola[insertarAlinicio ? inicio : Finaal] = elemento;
+}
+
 
     public void eliminarElemento(boolean eliminarDelinicio) {
         if (estáVacia()) {
