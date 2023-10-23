@@ -4,6 +4,8 @@ public class Main {
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
             CircularCola cola = new CircularCola(10);
+
+            buclePrincipal: // Etiqueta para el bucle
             while (true) {
                 System.out.println("Menú:");
                 System.out.println("1. Inicializar / Borrar Cola");
@@ -48,8 +50,7 @@ public class Main {
                         break;
                     case 6:
                         System.out.println("Saliendo......");
-                        System.exit(0);
-                        break;
+                        break buclePrincipal; // Salir del bucle principal
                     default:
                         System.out.println("Opción no válida. Inténtelo de nuevo.");
                         break;
