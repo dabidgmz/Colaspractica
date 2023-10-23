@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
             CircularCola cola = new CircularCola(10);
-
             buclePrincipal: 
             while (true) {
                 System.out.println("Menú:");
@@ -25,7 +24,7 @@ public class Main {
                         System.out.print("Contenido de la cola: ");
                         cola.mostrarCola();
                         break;
-                        case 3: // Insertar
+                        case 3: 
                         System.out.print("Ingrese un número: ");
                         int num = scanner.nextInt();
                         System.out.print("Insertar en el inicio (1) o al final (2): ");
@@ -49,8 +48,8 @@ public class Main {
                         System.out.println("Créditos:");
                         System.out.println("4C");
                         System.out.println("Integrantes del equipo:");
+                        System.out.println("Maria de Los Angeles Rivera Villegas - 21030227");
                         System.out.println("David Gomez Herrera - 22170035");
-                        System.out.println("Maria de Los Angeles Rivera Villegas - [Matrícula 2]");
                         break;
                     case 6:
                         System.out.println("Saliendo......");

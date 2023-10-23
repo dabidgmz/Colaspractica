@@ -18,10 +18,9 @@ public class CircularCola {
 
     public void mostrarCola() {
         if (estáVacia()) {
-            System.out.println("Cola Vacía");
+            System.out.println("Cola esta  Vacía");
             return;
         }
-
         int i = inicio;
         do {
             System.out.print(cola[i] + " ");
@@ -29,11 +28,9 @@ public class CircularCola {
         } while (i != (Finaal + 1) % tamañoMáximo);
         System.out.println();
     }
-
     public boolean estáVacia() {
         return inicio == -1;
     }
-
     public void insertarElemento(int elemento, boolean insertarAlinicio) {
         if (inicio == 0 && Finaal == tamañoMáximo - 1 || inicio == Finaal + 1) {
             throw new RuntimeException("La cola está llena, no se puede insertar.");
@@ -57,7 +54,6 @@ public class CircularCola {
             System.out.println("Cola Vacía");
             return;
         }
-
         if (inicio == Finaal) {
             inicializarCola();
         } else if (eliminarDelinicio) {
