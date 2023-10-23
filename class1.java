@@ -1,73 +1,73 @@
-class CircularQueue {
-    private int maxSize;
-    private int[] queue;
-    private int front = -1;
-    private int rear = -1;
+class CircularCola {
+    private int tamañoMáximo;
+    private int[] cola;
+    private int frente = -1;
+    private int trasera = -1;
 
-    public CircularQueue(int maxSize) {
-        this.maxSize = maxSize;
-        queue = new int[maxSize];
-        front = -1;
-        rear = -1;
+    public CircularCola(int tamañoMáximo) {
+        this.tamañoMáximo = tamañoMáximo;
+        cola = new int[tamañoMáximo];
+        frente = -1;
+        trasera = -1;
     }
 
-    public void initializeQueue() {
-        front = -1;
-        rear = -1;
+    public void inicializarCola() {
+        frente = -1;
+        trasera = -1;
     }
 
-    public void displayQueue() {
-        if (isEmpty()) {
+    public void mostrarCola() {
+        if (estáVacia()) {
             System.out.println("Cola Vacía");
             return;
         }
 
-        int i = front;
+        int i = frente;
         do {
-            System.out.print(queue[i] + " ");
-            i = (i + 1) % maxSize;
-        } while (i != (rear + 1) % maxSize);
+            System.out.print(cola[i] + " ");
+            i = (i + 1) % tamañoMáximo;
+        } while (i != (trasera + 1) % tamañoMáximo);
         System.out.println();
     }
 
-    public boolean isFull() {
-        return (front == 0 && rear == maxSize - 1) || (front == rear + 1);
+    public boolean estáLlena() {
+        return (frente == 0 && trasera == tamañoMáximo - 1) || (frente == trasera + 1);
     }
 
-    public boolean isEmpty() {
-        return front == -1;
+    public boolean estáVacia() {
+        return frente == -1;
     }
 
-    public void insertElement(int element, boolean insertAtFront) {
-        if (isFull()) {
+    public void insertarElemento(int elemento, boolean insertarAlFrente) {
+        if (estáLlena()) {
             System.out.println("La cola está llena");
             return;
         }
 
-        if (isEmpty()) {
-            front = 0;
-            rear = 0;
-        } else if (insertAtFront) {
-            front = (front - 1 + maxSize) % maxSize;
+        if (estáVacia()) {
+            frente = 0;
+            trasera = 0;
+        } else if (insertarAlFrente) {
+            frente = (frente - 1 + tamañoMáximo) % tamañoMáximo;
         } else {
-            rear = (rear + 1) % maxSize;
+            trasera = (trasera + 1) % tamañoMáximo;
         }
 
-        queue[insertAtFront ? front : rear] = element;
+        cola[insertarAlFrente ? frente : trasera] = elemento;
     }
 
-    public void deleteElement(boolean deleteFromFront) {
-        if (isEmpty()) {
+    public void eliminarElemento(boolean eliminarDelFrente) {
+        if (estáVacia()) {
             System.out.println("Cola Vacía");
             return;
         }
 
-        if (front == rear) {
-            initializeQueue();
-        } else if (deleteFromFront) {
-            front = (front + 1) % maxSize;
+        if (frente == trasera) {
+            inicializarCola();
+        } else if (eliminarDelFrente) {
+            frente = (frente + 1) % tamañoMáximo;
         } else {
-            rear = (rear - 1 + maxSize) % maxSize;
+            trasera = (trasera - 1 + tamañoMáximo) % tamañoMáximo;
         }
     }
 }
