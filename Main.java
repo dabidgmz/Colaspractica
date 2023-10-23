@@ -13,8 +13,8 @@ public class Main {
                 System.out.println("5. Créditos");
                 System.out.println("6. Salir");
                 System.out.print("Elija una opción: ");
-                int choice = scanner.nextInt();
-                switch (choice) {
+                int opcion = scanner.nextInt();
+                switch (opcion) {
                     case 1:
                         cola.inicializarCola();
                         System.out.println("Cola inicializada/borrada.");
@@ -28,15 +28,15 @@ public class Main {
                         int num = scanner.nextInt();
                         System.out.print("Insertar en el inicio (1) o al final (2): ");
                         int insertChoice = scanner.nextInt();
-                        boolean insertarAlFrente = (insertChoice == 1);
-                        cola.insertarElemento(num, insertarAlFrente);
+                        boolean insertarAlinicio = (insertChoice == 1);
+                        cola.insertarElemento(num, insertarAlinicio);
                         System.out.println("Elemento insertado en la cola.");
                         break;
                     case 4:
                         System.out.print("Eliminar desde el inicio (1) o desde el final (2): ");
                         int deleteChoice = scanner.nextInt();
-                        boolean eliminarDelFrente = (deleteChoice == 1);
-                        cola.eliminarElemento(eliminarDelFrente);
+                        boolean eliminarDelinicio = (deleteChoice == 1);
+                        cola.eliminarElemento(eliminarDelinicio);
                         System.out.println("Elemento eliminado de la cola.");
                         break;
                     case 5:

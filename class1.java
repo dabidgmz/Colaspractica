@@ -1,19 +1,19 @@
 class CircularCola {
     private int tamañoMáximo;
     private int[] cola;
-    private int frente = -1;
-    private int trasera = -1;
+    private int inicio = -1;
+    private int Finaal = -1;
 
     public CircularCola(int tamañoMáximo) {
         this.tamañoMáximo = tamañoMáximo;
         cola = new int[tamañoMáximo];
-        frente = -1;
-        trasera = -1;
+        inicio = -1;
+        Finaal = -1;
     }
 
     public void inicializarCola() {
-        frente = -1;
-        trasera = -1;
+        inicio = -1;
+        Finaal = -1;
     }
 
     public void mostrarCola() {
@@ -22,52 +22,52 @@ class CircularCola {
             return;
         }
 
-        int i = frente;
+        int i = inicio;
         do {
             System.out.print(cola[i] + " ");
             i = (i + 1) % tamañoMáximo;
-        } while (i != (trasera + 1) % tamañoMáximo);
+        } while (i != (Finaal + 1) % tamañoMáximo);
         System.out.println();
     }
 
     public boolean estáLlena() {
-        return (frente == 0 && trasera == tamañoMáximo - 1) || (frente == trasera + 1);
+        return (inicio == 0 && Finaal == tamañoMáximo - 1) || (inicio == Finaal + 1);
     }
 
     public boolean estáVacia() {
-        return frente == -1;
+        return inicio == -1;
     }
 
-    public void insertarElemento(int elemento, boolean insertarAlFrente) {
+    public void insertarElemento(int elemento, boolean insertarAlinicio) {
         if (estáLlena()) {
             System.out.println("La cola está llena");
             return;
         }
 
         if (estáVacia()) {
-            frente = 0;
-            trasera = 0;
-        } else if (insertarAlFrente) {
-            frente = (frente - 1 + tamañoMáximo) % tamañoMáximo;
+            inicio = 0;
+            Finaal = 0;
+        } else if (insertarAlinicio) {
+            inicio = (inicio - 1 + tamañoMáximo) % tamañoMáximo;
         } else {
-            trasera = (trasera + 1) % tamañoMáximo;
+            Finaal = (Finaal + 1) % tamañoMáximo;
         }
 
-        cola[insertarAlFrente ? frente : trasera] = elemento;
+        cola[insertarAlinicio ? inicio : Finaal] = elemento;
     }
 
-    public void eliminarElemento(boolean eliminarDelFrente) {
+    public void eliminarElemento(boolean eliminarDelinicio) {
         if (estáVacia()) {
             System.out.println("Cola Vacía");
             return;
         }
 
-        if (frente == trasera) {
+        if (inicio == Finaal) {
             inicializarCola();
-        } else if (eliminarDelFrente) {
-            frente = (frente + 1) % tamañoMáximo;
+        } else if (eliminarDelinicio) {
+            inicio = (inicio + 1) % tamañoMáximo;
         } else {
-            trasera = (trasera - 1 + tamañoMáximo) % tamañoMáximo;
+            Finaal = (Finaal- 1 + tamañoMáximo) % tamañoMáximo;
         }
     }
 }
