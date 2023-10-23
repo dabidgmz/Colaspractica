@@ -25,14 +25,18 @@ public class Main {
                         System.out.print("Contenido de la cola: ");
                         cola.mostrarCola();
                         break;
-                    case 3:
+                        case 3: // Insertar
                         System.out.print("Ingrese un número: ");
                         int num = scanner.nextInt();
                         System.out.print("Insertar en el inicio (1) o al final (2): ");
                         int insertChoice = scanner.nextInt();
                         boolean insertarAlinicio = (insertChoice == 1);
-                        cola.insertarElemento(num, insertarAlinicio);
-                        System.out.println("Elemento insertado en la cola.");
+                        try {
+                            cola.insertarElemento(num, insertarAlinicio);
+                            System.out.println("Elemento insertado en la cola.");
+                        } catch (RuntimeException e) {
+                            System.out.println(e.getMessage()); 
+                        }
                         break;
                     case 4:
                         System.out.print("Eliminar desde el inicio (1) o desde el final (2): ");
@@ -50,7 +54,7 @@ public class Main {
                         break;
                     case 6:
                         System.out.println("Saliendo......");
-                        break buclePrincipal; // Salir del bucle principal
+                        break buclePrincipal;
                     default:
                         System.out.println("Opción no válida. Inténtelo de nuevo.");
                         break;

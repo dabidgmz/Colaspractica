@@ -1,4 +1,4 @@
-class CircularCola {
+public class CircularCola {
     private int tamañoMáximo;
     private int[] cola;
     private int inicio = -1;
@@ -30,33 +30,27 @@ class CircularCola {
         System.out.println();
     }
 
-    public boolean estáLlena() {
-        return (inicio == 0 && Finaal == tamañoMáximo - 1) || (inicio == Finaal + 1);
-    }
-
     public boolean estáVacia() {
         return inicio == -1;
     }
 
+    public void insertarElemento(int elemento, boolean insertarAlinicio) {
+        if (inicio == 0 && Finaal == tamañoMáximo - 1 || inicio == Finaal + 1) {
+            throw new RuntimeException("La cola está llena, no se puede insertar.");
+        }
     
-public void insertarElemento(int elemento, boolean insertarAlinicio) {
-    if (estáLlena()) {
-        System.out.println("La cola está llena, no se puede insertar.");
-        return;
+        if (estáVacia()) {
+            inicio = 0;
+            Finaal = 0;
+        } else if (insertarAlinicio) {
+            inicio = (inicio - 1 + tamañoMáximo) % tamañoMáximo;
+        } else {
+            Finaal = (Finaal + 1) % tamañoMáximo;
+        }
+    
+        cola[insertarAlinicio ? inicio : Finaal] = elemento;
     }
-
-    if (estáVacia()) {
-        inicio = 0;
-        Finaal = 0;
-    } else if (insertarAlinicio) {
-        inicio = (inicio - 1 + tamañoMáximo) % tamañoMáximo;
-    } else {
-        Finaal = (Finaal + 1) % tamañoMáximo;
-    }
-
-    cola[insertarAlinicio ? inicio : Finaal] = elemento;
-}
-
+    
 
     public void eliminarElemento(boolean eliminarDelinicio) {
         if (estáVacia()) {
@@ -69,7 +63,7 @@ public void insertarElemento(int elemento, boolean insertarAlinicio) {
         } else if (eliminarDelinicio) {
             inicio = (inicio + 1) % tamañoMáximo;
         } else {
-            Finaal = (Finaal- 1 + tamañoMáximo) % tamañoMáximo;
+            Finaal = (Finaal - 1 + tamañoMáximo) % tamañoMáximo;
         }
     }
 }
